@@ -6,7 +6,7 @@ import {
 } from "react-navigation";
 
 import Home from './Home';
-import Profile from './Profile';
+import Portfolio from './Portfolio';
 
 const HomeStackNav = createStackNavigator({
   Home: {
@@ -14,18 +14,18 @@ const HomeStackNav = createStackNavigator({
   }
 })
 
-const ProfileStackNav = createStackNavigator({
-  Profile: {
-    screen: Profile
+const PortfolioStackNav = createStackNavigator({
+  Portfolio: {
+    screen: Portfolio
   }
-})
+});
 
 const AppTabNav = createBottomTabNavigator({
   Home : {
     screen: HomeStackNav
   },
-  Profile: {
-    screen: ProfileStackNav
+  Portfolio: {
+    screen: PortfolioStackNav
   }
 });
 

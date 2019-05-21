@@ -4,8 +4,13 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import useCustom from "./customHook";
 
 const Home = () => {
-  const [globalState, setGlobalState ] = useCustom();
+  const [globalState, setGlobalState] = useCustom();
 
+  const addPortfolioValue = () => {
+    const newPortfolioValue = globalState.portfolioValue + 100
+    const newRank = globalState.rank - 1
+    setGlobalState({ portfolioValue: newPortfolioValue, rank: newRank })
+  }
 
   return (
     <View style={styles.container}>
@@ -15,9 +20,10 @@ const Home = () => {
       <Text style={styles.welcome}>
         Percent Change: {globalState.portfolioChange} %
       </Text>
-      <Text style={styles.instructions}>
-        Current Rank: {globalState.rank}
-      </Text>
+      <Text style={styles.instructions}>Current Rank: {globalState.rank}</Text>
+      <TouchableOpacity style={styles.button} onPress={() => addPortfolioValue()}>
+        <Text>Add $100 to portfolio</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -38,6 +44,12 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#333333",
     marginBottom: 5
+  },
+  button: {
+    backgroundColor: "lightblue",
+    marginTop: 10,
+    padding: 10,
+    borderRadius: 10
   }
 });
 
